@@ -55,11 +55,12 @@ function App() {
     console.log('Prompt:', prompt);
 
     try {
+      const apiKey = process.env.REACT_APP_OPENAI_API_KEY; // Store API key in a variable
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`
+          'Authorization': `Bearer ${apiKey}` // Use the variable here
         },
         body: JSON.stringify({
           model: "gpt-3.5-turbo",
