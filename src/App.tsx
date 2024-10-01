@@ -55,12 +55,14 @@ function App() {
     console.log('Prompt:', prompt);
 
     try {
-      const apiKey = process.env.REACT_APP_OPENAI_API_KEY; // Store API key in a variable
+      const apiKey = process.env.REACT_APP_OPENAI_API_KEY;
+      console.log('API Key available:', !!apiKey); // Log whether API key is available (true/false)
+
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}` // Use the variable here
+          'Authorization': `Bearer ${apiKey}`
         },
         body: JSON.stringify({
           model: "gpt-3.5-turbo",
@@ -83,16 +85,19 @@ function App() {
       console.log('Response status:', response.status);
       console.log('Response OK:', response.ok);
 
+      const responseText = await response.text();
+      console.log('Raw response:', responseText);
+
       if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Error response:', errorText);
-        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+        console.error('Error response:', responseText);
+        throw new Error(`HTTP error! status: ${response.status}, message: ${responseText}`);
       }
 
-      const data = await response.json();
-      console.log('API Response:', data);
+      const data = JSON.parse(responseText);
+      console.log('Parsed API Response:', data);
 
       if (data.choices && data.choices.length > 0) {
+        console.log('Generated content:', data.choices[0].message.content);
         setGeneratedEmail(data.choices[0].message.content.trim());
       } else {
         console.error('No choices in API response:', data);
