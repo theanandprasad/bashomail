@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/bashomail/static/css/main.25af688e.css",
-    "main.js": "/bashomail/static/js/main.046a9808.js",
+    "main.js": "/bashomail/static/js/main.21886c8e.js",
     "static/js/453.a9387921.chunk.js": "/bashomail/static/js/453.a9387921.chunk.js",
     "index.html": "/bashomail/index.html",
     "main.25af688e.css.map": "/bashomail/static/css/main.25af688e.css.map",
-    "main.046a9808.js.map": "/bashomail/static/js/main.046a9808.js.map",
+    "main.21886c8e.js.map": "/bashomail/static/js/main.21886c8e.js.map",
     "453.a9387921.chunk.js.map": "/bashomail/static/js/453.a9387921.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.25af688e.css",
-    "static/js/main.046a9808.js"
+    "static/js/main.21886c8e.js"
   ]
 }
